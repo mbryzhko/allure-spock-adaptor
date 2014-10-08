@@ -198,7 +198,7 @@ class SpockRunListenerSpec extends Specification {
 
 	private SpecInfo createSpecificationInfoFrom(Class<?> specClass) {
 		def spec = new SpecInfoBuilder(specClass).build()
-		new JUnitDescriptionGenerator(spec).describeSpecMethods()
+		new JUnitDescriptionGenerator(spec).attach()
 		return spec
 	}
 
