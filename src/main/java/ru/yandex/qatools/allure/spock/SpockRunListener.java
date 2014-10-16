@@ -7,7 +7,11 @@ import org.spockframework.runtime.model.FeatureInfo;
 import org.spockframework.runtime.model.IterationInfo;
 import org.spockframework.runtime.model.SpecInfo;
 import ru.yandex.qatools.allure.Allure;
-import ru.yandex.qatools.allure.events.*;
+import ru.yandex.qatools.allure.events.TestCaseFinishedEvent;
+import ru.yandex.qatools.allure.events.TestCaseFailureEvent;
+import ru.yandex.qatools.allure.events.TestCaseStartedEvent;
+import ru.yandex.qatools.allure.events.TestSuiteFinishedEvent;
+import ru.yandex.qatools.allure.events.TestSuiteStartedEvent;
 import ru.yandex.qatools.allure.utils.AnnotationManager;
 import spock.lang.Unroll;
 
@@ -74,7 +78,7 @@ public class SpockRunListener extends AbstractRunListener {
 
     @Override
     public void error(ErrorInfo error) {
-        lifecycle.fire(new TestCaseFailureEvent().withThrowable(error.getException()));
+        getLifecycle().fire(new TestCaseFailureEvent().withThrowable(error.getException()));
     }
 
     @Override
